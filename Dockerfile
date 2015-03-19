@@ -40,7 +40,7 @@ RUN apt-get update -q && apt-get install -yq --no-install-recommends \
 ENV RUBY_VERSION 2.2
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C3173AA6 && \
-    echo deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu trusty main > /etc/apt/sources.list.d/brightbox-ruby-ng-trusty.list && \
+    echo deb http://ppa.launchpad.net/brightbox/ruby-ng-experimental/ubuntu trusty main > /etc/apt/sources.list.d/brightbox-ruby-ng-experimental-trusty.list && \
     apt-get update -q && apt-get install -yq --no-install-recommends \
         ruby$RUBY_VERSION \
         ruby$RUBY_VERSION-dev && \
