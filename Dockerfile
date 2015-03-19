@@ -32,7 +32,8 @@ RUN apt-get update -q && apt-get install -yq --no-install-recommends \
         libxml2-dev \
         libxslt-dev \
         libyaml-dev \
-        zlib1g-dev && \
+        zlib1g-dev \
+        git-core && \
 
     rm -rf /var/lib/apt/lists/* && \
     truncate -s 0 /var/log/*log
