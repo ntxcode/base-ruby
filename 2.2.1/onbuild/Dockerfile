@@ -29,7 +29,7 @@ WORKDIR /usr/src/app
 
 ONBUILD COPY Gemfile      /usr/src/app/
 ONBUILD COPY Gemfile.lock /usr/src/app/
-ONBUILD RUN bundle install
+ONBUILD RUN bundle install --without development:test
 
 ONBUILD COPY . /usr/src/app
 
