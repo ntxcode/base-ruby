@@ -22,4 +22,15 @@ RUN rm -rf /var/lib/apt/lists/* && \
     cd /usr/share && rm -fr doc/* man/* info/* lintian/* && \
     mkdir man/man1
 
+RUN bundle config --global frozen 1 && \
+    mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
+
+ONBUILD COPY Gemfile      /usr/src/app/
+ONBUILD COPY Gemfile.lock /usr/src/app/
+ONBUILD RUN bundle install
+
+ONBUILD COPY . /usr/src/app
+
 CMD ["/usr/bin/ruby"]
