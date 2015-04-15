@@ -11,7 +11,9 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C3173AA6 &
         # For postgis/rgeo support
         libgeos-dev \
         ruby$RUBY_VERSION \
-        ruby$RUBY_VERSION-dev && \
+        ruby$RUBY_VERSION-dev \
+        # Nginx
+        nginx && \
 
     # Setup Rubygems
     echo 'gem: --no-document' > /etc/gemrc && \
