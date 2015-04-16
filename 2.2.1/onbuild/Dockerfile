@@ -10,15 +10,12 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C3173AA6 &
         git-core \
         # For postgis/rgeo support
         libgeos-dev \
-        libgeos-3.3.8 \
-        proj \
         ruby$RUBY_VERSION \
         ruby$RUBY_VERSION-dev \
+        libgeos-dev \
+        ruby-geos \
         # Nginx
-        nginx && \
-
-# Link GEOS correctly
-RUN ln -s /usr/lib/libgeos-3.3.8.so /usr/lib/libgeos.so
+        nginx
 
 # Setup Rubygems
 RUN echo 'gem: --no-document' > /etc/gemrc && \
@@ -28,6 +25,8 @@ RUN rm -rf /var/lib/apt/lists/* && \
     truncate -s 0 /var/log/*log && \
     cd /usr/share && rm -fr doc/* man/* info/* lintian/* && \
     mkdir man/man1
+
+RUN cd /usr/lib && ln -s libgeos-3.4.2.so libgeos.so
 
 RUN bundle config --global frozen 1 && \
     mkdir -p /usr/src/app
