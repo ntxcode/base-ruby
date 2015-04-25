@@ -25,10 +25,12 @@ RUN apt-get update \
     && cd /tmp \
     && echo 'gem: --no-document' > /etc/gemrc \
     && gem install bundler && gem update --system
-    
+
 RUN rm -rf /var/lib/apt/lists/* && \
     truncate -s 0 /var/log/*log && \
     cd /usr/share && rm -fr doc/* man/* info/* lintian/* && \
     mkdir man/man1
+
+RUN cd /usr/lib && ln -s libgeos-3.4.2.so libgeos.so
 
 CMD ["/usr/bin/ruby"]

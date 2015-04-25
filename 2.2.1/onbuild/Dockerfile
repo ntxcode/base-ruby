@@ -31,6 +31,8 @@ RUN rm -rf /var/lib/apt/lists/* && \
     cd /usr/share && rm -fr doc/* man/* info/* lintian/* && \
     mkdir man/man1
 
+RUN cd /usr/lib && ln -s libgeos-3.4.2.so libgeos.so
+
 RUN bundle config --global frozen 1 && \
     mkdir -p /usr/src/app
 
